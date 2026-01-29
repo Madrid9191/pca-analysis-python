@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+title: PCA Analysis Tool
+message: "If you use this software, please cite it as follows:"
+type: software
+
+authors:
+  - family-names: Madrid
+    given-names: Manuel
+
+version: 1.0.0
+date-released: 2026-01-29
+
+abstract: >
+  Python tool for Principal Component Analysis (PCA) including
+  categorical encoding, standardization, visualization, and
+  export of results for scientific and exploratory data analysis.
+
+keywords:
+  - PCA
+  - principal component analysis
+  - multivariate analysis
+  - data science
+  - python
+  - statistics
+
+license: MIT

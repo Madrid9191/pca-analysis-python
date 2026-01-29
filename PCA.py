@@ -8,13 +8,8 @@ import warnings
 warnings.filterwarnings('ignore')
 
 
-# =============================================================================
-# PCA COMPLETO CON ANOTACIONES INTERPRETABLES
-# =============================================================================
-
 def analisis_pca_completo():
 
-    # -------------------------------------------------------------------------
     def cargar_archivo():
         while True:
             nombre = input("Ingrese el archivo (Excel o CSV): ").strip()
@@ -26,7 +21,6 @@ def analisis_pca_completo():
             return pd.read_csv(nombre) if nombre.endswith(".csv") else pd.read_excel(nombre)
 
 
-    # -------------------------------------------------------------------------
     def procesar_ordinales(df):
         entrada = input("\nColumnas ordinales (coma) o Enter: ").strip()
         if not entrada:
@@ -39,8 +33,6 @@ def analisis_pca_completo():
 
         return df
 
-
-    # -------------------------------------------------------------------------
     def procesar_nominales(df):
         entrada = input("\nColumnas nominales (coma) o Enter: ").strip()
         if not entrada:
@@ -61,7 +53,6 @@ def analisis_pca_completo():
         return df
 
 
-    # -------------------------------------------------------------------------
     def estandarizar(df):
         scaler = StandardScaler()
         df[df.columns] = scaler.fit_transform(df)
@@ -69,7 +60,6 @@ def analisis_pca_completo():
         return df
 
 
-    # -------------------------------------------------------------------------
     def pca_manual(df):
 
         corr = df.corr()
@@ -84,16 +74,10 @@ def analisis_pca_completo():
         return eigval, eigvec, var_exp, componentes, df.columns
 
 
-    # -------------------------------------------------------------------------
-    # 🔥 GRÁFICAS CON INTERPRETACIÓN
-    # -------------------------------------------------------------------------
     def graficar(var_exp, componentes, cargas, nombres, eigval):
 
         sns.set_theme(style="whitegrid")
 
-        # =====================================================
-        # 1 Scree + Biplot
-        # =====================================================
         fig, ax = plt.subplots(1, 2, figsize=(13, 5))
 
         # Scree
@@ -133,10 +117,6 @@ def analisis_pca_completo():
         plt.savefig("pca_scree_biplot.png", dpi=300)
         plt.close()
 
-
-        # =====================================================
-        # 2 Varianza acumulada
-        # =====================================================
         var_acum = np.cumsum(var_exp)
         n80 = np.argmax(var_acum >= 80) + 1
 
@@ -156,10 +136,6 @@ def analisis_pca_completo():
         plt.savefig("varianza_acumulada.png", dpi=300)
         plt.close()
 
-
-        # =====================================================
-        # 3 Heatmap cargas
-        # =====================================================
         plt.figure(figsize=(8,6))
         sns.heatmap(cargas[:, :4],
                     annot=True,
@@ -172,10 +148,6 @@ def analisis_pca_completo():
         plt.savefig("heatmap_cargas.png", dpi=300)
         plt.close()
 
-
-        # =====================================================
-        # 4 Scatter PC1-PC2
-        # =====================================================
         plt.figure(figsize=(6,5))
         plt.scatter(pc1, pc2, alpha=0.7)
 
@@ -193,10 +165,6 @@ def analisis_pca_completo():
         plt.savefig("pc1_pc2_scatter.png", dpi=300)
         plt.close()
 
-
-        # =====================================================
-        # 5 Contribución PC1 (TOP variables)
-        # =====================================================
         contrib = np.abs(cargas[:, 0])
         order = np.argsort(contrib)[::-1]
 
@@ -215,9 +183,6 @@ def analisis_pca_completo():
 
         print("\n✅ Todas las gráficas guardadas correctamente")
 
-
-    # ================= EJECUCIÓN =================
-
     df = cargar_archivo()
     df = procesar_ordinales(df)
     df = procesar_nominales(df)
@@ -228,8 +193,6 @@ def analisis_pca_completo():
 
     graficar(var_exp, comp, cargas, nombres, eigval)
 
-
-# =============================================================================
 
 if __name__ == "__main__":
     analisis_pca_completo()

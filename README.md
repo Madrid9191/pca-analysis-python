@@ -125,7 +125,7 @@ Para aplicar PCA correctamente:
 
 ---
 
-# Istrucciones 
+# Instrucciones 
  
 ## Asegúrese de tener Python 3.8 o superior instalado.
 

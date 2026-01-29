@@ -125,4 +125,112 @@ Para aplicar PCA correctamente:
 
 ---
 
+# Istrucciones 
+ 
+## Asegúrese de tener Python 3.8 o superior instalado.
 
+Puede verificarlo ejecutando en la terminal o consola:
+python --version
+python3 --version
+
+## Descargar el repositorio
+
+Desde GitHub:
+
+git clone https://github.com/Madrid9191/pca-analysis-tool.git
+cd pca-analysis-tool
+
+
+O descargue el repositorio como archivo .zip y descomprímalo.
+
+## Instalar dependencias
+
+Instalar dependencias
+
+pip install -r requirements.txt
+
+Esto instalará automáticamente todas las librerías necesarias.
+
+## Preparar los datos
+
+El archivo de datos debe cumplir las siguientes condiciones:
+
+Formato CSV (.csv) o Excel (.xlsx / .xls)
+
+## Ejecutar el programa
+
+Desde la carpeta raíz del proyecto, ejecute:
+
+python src/PCA.py
+
+Se iniciará un menú interactivo en la consola.
+
+## Paso 1 — Cargar archivo
+
+Ingrese:
+
+datos.xlsx
+
+## Paso 2 — Variables ordinales (opcional)
+
+Ejemplo:
+
+Calidad, Nivel
+
+
+Si no hay → presione Enter.
+
+## Paso 3 — Variables nominales (opcional)
+
+Ejemplo:
+
+Tratamiento, Region
+
+
+Se aplica automáticamente One-Hot Encoding.
+
+## Paso 4 — Estandarización
+
+El programa transforma automáticamente:
+
+media = 0
+
+desviación estándar = 1
+
+## Paso 5 — Cálculo del PCA
+
+Se obtienen:
+
+Componentes principales
+
+Autovalores
+
+Varianza explicada
+
+Cargas factoriales
+
+Datos transformados
+
+## Paso 6 — Gráficos generados
+
+Incluye:
+
+📊 Scree Plot
+
+📈 Varianza acumulada
+
+🔵 Scatter PC1 vs PC2
+
+🧭 Biplot
+
+🔥 Heatmap de cargas
+
+📌 Contribución de variables
+
+## Cerrar el programa
+
+El análisis finaliza automáticamente al terminar el flujo.
+
+Para interrumpir el proceso en cualquier momento:
+
+Ctrl + C
